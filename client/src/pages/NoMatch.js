@@ -1,24 +1,17 @@
-import React from "react";
-import { Col, Row, Container } from "../components/Grid";
-import Jumbotron from "../components/Jumbotron";
+import React from 'react'
+import Jumbotron from '../components/Jumbotron';
 
 function NoMatch() {
   return (
-    <Container fluid>
-      <Row>
-        <Col size="md-12">
-          <Jumbotron>
-            <h1>404 Page Not Found</h1>
-            <h1>
-              <span role="img" aria-label="Face With Rolling Eyes Emoji">
-                🙄
-              </span>
-            </h1>
-          </Jumbotron>
-        </Col>
-      </Row>
-    </Container>
-  );
+    <div className="container">
+      <Jumbotron
+        image="http://www.justscience.in/wp-content/uploads/2018/01/what-would-happen-if-someone-detonated-a-nuclear-bomb-today.jpg"
+        title="404"
+        lead="Page Not Found"
+        instructions="Run for Your Lives!!!"
+      />
+    </div>
+  )
 }
 
 export default NoMatch;

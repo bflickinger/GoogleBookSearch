@@ -1,20 +1,27 @@
-import axios from "axios";
+import axios from 'axios';
+
+const DEFAULT_HPP = '15';
+
+const PATH_BASE = 'https://www.googleapis.com/books/v1';
+const PATH_SEARCH = '/volumes';
+const PARAM_SEARCH = 'q=';
+const PARAM_HPP = 'maxResults=';
+// const API_KEY = process.env.REACT_APP_API_KEY;
 
 export default {
-  // Gets all books
-  getBooks: function() {
-    return axios.get("/api/books");
+  getGoogleBooks: function (search) {
+    return axios.get(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${search}&${PARAM_HPP}${DEFAULT_HPP}`)
   },
-  // Gets the book with the given id
-  getBook: function(id) {
-    return axios.get("/api/books/" + id);
+
+  saveBook: function (bookData) {
+    return axios.post('/api/bookshelf', bookData);
   },
-  // Deletes the book with the given id
-  deleteBook: function(id) {
-    return axios.delete("/api/books/" + id);
+
+  getBookshelf: function () {
+    return axios.get('/api/bookshelf')
   },
-  // Saves a book to the database
-  saveBook: function(bookData) {
-    return axios.post("/api/books", bookData);
+
+  deleteBook: function (id) {
+    return axios.delete(`/api/bookshelf/${id}`)
   }
 };
