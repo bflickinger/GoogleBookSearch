@@ -8,3 +8,7 @@
 .media {
   min-height: 210px;
 }
+
+.card-columns {
+  padding-top: 20px;
+}
