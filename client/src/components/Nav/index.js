@@ -1,30 +1,29 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Index() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <Link className="navbar-brand" to="/">
-          Google Book Search
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+      <Link className="navbar-brand" to="/">
+        Google Book Search
         </Link>
       <div className="container">
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"/>
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target=".nav-collapse">
+          <span className="navbar-toggler-icon" />
         </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav mr-auto">
+        <div className="navbar-collapse collapse">
+          <ul className="nav navbar-nav ml-auto">
             <li className="nav-item">
               <Link to="/"
-                    className={window.location.pathname === "/" || window.location.pathname === "/search"
-                      ? "nav-link active"
-                      : "nav-link"}>Search</Link>
+                className={window.location.pathname === "/" || window.location.pathname === "/search"
+                  ? "nav-link active"
+                  : "nav-link"}>Search</Link>
             </li>
             <li className="nav-item">
               <Link to="/bookshelf"
-                    className={window.location.pathname === "/bookshelf"
-                      ? "nav-link active"
-                      : "nav-link"}>My Bookshelf</Link>
+                className={window.location.pathname === "/bookshelf"
+                  ? "nav-link active"
+                  : "nav-link"}>Bookshelf</Link>
             </li>
           </ul>
         </div>

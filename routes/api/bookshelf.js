@@ -1,12 +1,12 @@
 const router = require('express').Router();
 const bookshelfController = require('../../controllers/bookshelfController');
 
-//'/api/bookshelf' route
+//bookshelf / route
 router.route('/')
   .get(bookshelfController.findAll)
   .post(bookshelfController.create);
 
-//'/api/bookshelf/:id' route
+//bookself /:id route
 router.route('/:id')
   .delete(bookshelfController.delete);
 

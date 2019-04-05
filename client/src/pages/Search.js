@@ -5,8 +5,6 @@ import Jumbotron from '../components/Jumbotron';
 import SearchForm from '../components/SearchForm';
 import BookCard from '../components/BookCard';
 
-// Function to format the book results as they are returned from the API.  Allows for a single component 'BookCard'
-// that can be used in both pages.
 const formatBookResults = googleApiResults => {
   const bookArray = [];
 
@@ -43,7 +41,7 @@ class Search extends Component {
     error: ''
   };
 
-  // Method for saving a particular book to the database.
+  // Save a book to the database.
   saveBook = event => {
 
     const chosenBook = this.state.results.find(book => book.googleBookId === event.target.id);
@@ -67,23 +65,20 @@ class Search extends Component {
       })
       .catch(err => {
         console.log(err);
-        this.props.alert.show('Sorry, There was an issue with something back here...', {
+        this.props.alert.show('Sorry, There was a problem...', {
           type: 'error',
           timeout: 5000
         })
       })
   };
 
-  // Method handling the change of the input field.
+  // Event handlers.
   handleInputChange = event => {
     this.setState({search: event.target.value})
   };
 
-  // Method handling the submission of the Search form, makes a call to retrieve the results of the search
-  // from Google Books API.
   handleFormSubmit = event => {
     event.preventDefault();
-    // console.log(`Search for: ${this.state.search}`);
     API.getGoogleBooks(this.state.search)
       .then(res => {
         const formattedArray = formatBookResults(res.data.items);
@@ -95,12 +90,9 @@ class Search extends Component {
   render() {
     return (
       <div className="container">
-
         <Jumbotron
           title="Search"
-          lead="Using Google Books API"
-          instructions="Search for a book; then view it on Google Books, or add it to your Bookshelf..."
-          image="https://www.travelcaffeine.com/wp-content/uploads/2017/07/last-bookstore-tunnel-downtown-los-angeles-california-876.jpg"
+          image={require('../img/library.jpg')}
         />
         <SearchForm
           handleInputChange={this.handleInputChange}
@@ -117,5 +109,4 @@ class Search extends Component {
   }
 }
 
-// Exporting Component Utilizing the Alerts.
 export default withAlert(Search);

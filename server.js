@@ -5,19 +5,19 @@ const routes = require('./routes');
 const mongoose = require('mongoose');
 mongoose.set('useCreateIndex', true);
 
-// Define Middleware Here -------------------------------------
+// Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Serve Up Static Assets (usually on Heroku) -----------------
+// Static assets for Prod
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'))
 }
 
-// Define API Routes Here -------------------------------------
+// Express API Routes
 app.use(routes);
 
-// Connect to the MongoDB Database ----------------------------
+// MongoDB Connection
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/googlebooks';
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 

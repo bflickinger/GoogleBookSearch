@@ -12,15 +12,12 @@ export default {
   getGoogleBooks: function (search) {
     return axios.get(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${search}&${PARAM_HPP}${DEFAULT_HPP}`)
   },
-
   saveBook: function (bookData) {
     return axios.post('/api/bookshelf', bookData);
   },
-
   getBookshelf: function () {
     return axios.get('/api/bookshelf')
   },
-
   deleteBook: function (id) {
     return axios.delete(`/api/bookshelf/${id}`)
   }
